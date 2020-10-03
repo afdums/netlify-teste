@@ -79,11 +79,6 @@ function load() {
     showTasks()
 }   
 
-// add a task
-add.onclick = function () {
-   
-    var text = task.value
-=======
 const list = document.querySelector("#list");
 var element = document.getElementsByTagName('li');
 
@@ -123,7 +118,7 @@ function enterAsClick(event) {
   
   task.addEventListener('keyup', enterAsClick);
 
-// show all tasks
+  // show all tasks
 function showTasks(){
     tasks.forEach(function (element, index) {
         list.innerHTML +=   `<li>
@@ -141,22 +136,3 @@ list.onclick = function (ev) {
     }
 };
 
-
-// delete a task
-list.addEventListener('click', deletetask)
-
-function deletetask(ev) {
-    if (ev.target.classList.contains('delete')) {
-        ev.target.parentElement.remove()
-        var id = this.getAttribute('id')
-        tasks.splice(id, 1)
-        localStorage.setItem('tasks', JSON.stringify(tasks))
-
-list.addEventListener('click', deletetask);
-
-function deletetask (ev){
-    if (ev.target.classList.contains('delete') ) {
-        ev.target.parentElement.remove();
-
-    }
-}
