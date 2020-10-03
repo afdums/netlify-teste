@@ -79,9 +79,6 @@ function load() {
     showTasks()
 }   
 
-const list = document.querySelector("#list");
-var element = document.getElementsByTagName('li');
-
 
 add.onclick = function () {
 
@@ -100,11 +97,6 @@ add.onclick = function () {
         task.value = '';
 
     }
-    // add a task to the list
-    list.innerHTML +=   `<li>
-                                <lable>${text}</lable>    
-                                <i id="" class="far fa-trash-alt delete"></i> 
-                            </li>`
 
 };
 
@@ -114,7 +106,7 @@ function enterAsClick(event) {
       event.preventDefault(); 
       add.click(); 
     }
-  };
+};
   
   task.addEventListener('keyup', enterAsClick);
 
@@ -136,3 +128,15 @@ list.onclick = function (ev) {
     }
 };
 
+// delete a task
+list.addEventListener('click', deletetask)
+
+function deletetask(ev) {
+    if (ev.target.classList.contains('delete')) {
+        ev.target.parentElement.remove()
+        var id = this.getAttribute('id')
+        tasks.splice(id, 1)
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+
+}
